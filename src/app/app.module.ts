@@ -10,6 +10,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StatsComponent } from './components/stats/stats.component';
+import { CountryStatsComponent } from './components/country-stats/country-stats.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { StatsComponent } from './components/stats/stats.component';
     CarouselComponent,
     HeaderComponent,
     FooterComponent,
-    StatsComponent
+    StatsComponent,
+    CountryStatsComponent
   ],
   imports: [
     BrowserModule,

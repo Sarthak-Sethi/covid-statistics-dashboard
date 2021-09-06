@@ -1,0 +1,40 @@
+<div class="container text-center m-3 ">
+    <div class="row">
+      <div class="col text-left">
+        <h2 class="m-4">{{country | uppercase}}</h2>
+      </div>
+    </div>
+    <div class="row" id="space">
+      <div class="col-md-4" >
+        <div class="card card-infected border-warning">
+          <div class="card-body" [ngbPopover]="confirmed" triggers="mouseenter:mouseleave"
+            popoverTitle="Number of active cases of COVID-19">
+            <h3 class="card-title">INFECTED</h3>
+            <p class="card-text">{{update | date:'longDate'}}</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-4 md-3">
+        <div class="card card-recovered border-success">
+          <div class="card-body" [ngbPopover]="recovered" triggers="mouseenter:mouseleave"
+            popoverTitle="Number of recovered cases of COVID-19">
+            <h3 class="card-title">RECOVERED</h3>
+            <p class="card-text">{{update | date:'longDate'}}</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-4 md-3">
+        <div class="card card-recovered border-danger">
+          <div class="card-body" [ngbPopover]="deaths" triggers="mouseenter:mouseleave"
+            popoverTitle="Number of deaths cases of COVID-19">
+            <h3 class="card-title">DEATHS</h3>
+            <p class="card-text">{{update | date:'longDate'}}</p>
+          </div>
+        </div>
+      </div>
+  
+  
+    </div>
+  </div>

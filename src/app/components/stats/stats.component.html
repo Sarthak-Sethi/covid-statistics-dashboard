@@ -1,1 +1,82 @@
-<p>stats works!</p>
+<!-- STATS -->
+<div class="container text-center">
+  <div class="row">
+    <div class="col text-left">
+      <h2 class="m-4">S T A T I S T I C</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 md-3">
+      <div class="card card-infected bg-warning">
+        <div class="card-body" [ngbPopover]="confirmed" triggers="mouseenter:mouseleave"
+          popoverTitle="Number of active cases of COVID-19">
+          <h3 class="card-title">INFECTED</h3>
+          <p class="card-text">{{update | date:'longDate'}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 md-3">
+      <div class="card card-recovered bg-success">
+        <div class="card-body" [ngbPopover]="recovered" triggers="mouseenter:mouseleave"
+          popoverTitle="Number of recovered cases of COVID-19">
+          <h3 class="card-title">RECOVERED</h3>
+          <p class="card-text">{{update | date:'longDate'}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 md-3">
+      <div class="card card-recovered bg-danger">
+        <div class="card-body" [ngbPopover]="deaths" triggers="mouseenter:mouseleave"
+          popoverTitle="Number of deaths cases of COVID-19">
+          <h3 class="card-title">DEATHS</h3>
+          <p class="card-text">{{update | date:'longDate'}}</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+<!-- DROP DOWN  -->
+<div class="container justify-content-center">
+  <div ngbDropdown class="d-flex justify-content-center m-4">
+    <button class="btn bg-primary btn-block" id="dropdownBasic1" style="width:100%" ngbDropdownToggle>Toggle dropdown</button>
+    <div  ngbDropdownMenu aria-labelledby="dropdownBasic1">
+     <button  (click)= "list = true" ngbDropdownItem >List </button>
+        <button  *ngFor="let country of countries" ngbDropdownItem   (click)="countryChanged(country)" >{{country.name}}</button>
+   
+    </div>
+  </div>
+
+  <app-country-stats *ngIf="!list" [country]="selected_country" ></app-country-stats>
+  <!-- TABLE  -->
+
+  <table *ngIf="list" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Country</th>
+        <th scope="col">Confirmed</th>
+        <th scope="col">Deaths</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of countries; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td (click)="test()">
+          <img src='https://www.countryflags.io/{{country.iso2 | lowercase}}/shiny/64.png' class="mr-2"
+            style="width: 20px" />
+          {{ country.name }}
+        </td>
+
+        <td>{{ countryArr.get(country.name).confirmed.value }}</td>
+        <td>{{ countryArr.get(country.name).deaths.value }}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

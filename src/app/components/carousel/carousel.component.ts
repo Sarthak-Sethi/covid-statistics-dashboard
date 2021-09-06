@@ -9,8 +9,8 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
 })
 export class CarouselComponent implements OnInit {
   images : string [] =  new Array(3);
-  constructor() {  this.images[0]= 'https://source.unsplash.com/1600x900/?covid';
-  this.images[1]= 'https://source.unsplash.com/1600x900/?vaccine';
+  constructor() {  this.images[0]= 'https://source.unsplash.com/1600x900/?covid,virus';
+  this.images[1]= 'https://source.unsplash.com/1600x900/?vaccine,doctor';
   this.images[2]= 'https://source.unsplash.com/1600x900/?covid,medicine'; }
 
   ngOnInit(): void {
